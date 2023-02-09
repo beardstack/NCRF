@@ -1,0 +1,42 @@
+syntax = "proto3";
+package espconfig;
+
+import "shared/ip_address.proto";
+
+enum BootSequence {
+  BOOT_SEQUENCE_UNSPECIFIED = 0;
+  BOOT_SEQUENCE_AP_ONLY = 1;
+  BOOT_SEQUENCE_STATION_SYNC_AP = 2; 
+  BOOT_SEQUENCE_STATION_FALLBACK_AP = 3 [default = BOOT_SEQUENCE_AP_ONLY];
+}
+
+Message APconfig {
+  required string SSID;
+  required string password;
+  optional int32 channel;  
+}
+
+
+
+Message DHCPConfig {
+
+ //One of - Automatic or Static config
+ optional IPAddress ap_local_IP;
+ optional IPAddress ap_gateway;
+ optional IPAddress ap_subnet;
+ 
+}
+
+Message NTPConfig {
+  optional string pool_server_name [ (default) = "pool.ntp.org" ];
+  optional int32 port [(min_value) = 1, (max_value) = 65536, (default) = 1337]; 
+  
+}
+
+Message MDNSConfig {
+  
+}
+
+Message Settings {
+
+}

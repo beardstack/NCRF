@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package mqttconfig;
+
+import "shared/ip_address.proto";
+
+Message Topics {
+  repeated string topic;
+}
+
+Message KeepAlive {
+  required int32 keep_alive [ (default) = 10 ];
+}
+
+Message CleanSession {
+  required bool cleanSession [ (default) = true ];
+}
+
+Message MQTTconfig {
+
+  //one of those two 
+  required string host;
+  optional IPAddress host_ip;
+  
+  optional int32 port [(min_value) = 1, (max_value) = 65536, (default) = 1883];
+  optional Topics publish_topics;
+  optional KeepAlive keep_alive;
+  optional CleanSession clean_session;
+  optional int32 timeout [ (default) = 1000 ];
+  
+} 

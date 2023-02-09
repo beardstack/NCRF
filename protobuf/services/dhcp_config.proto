@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package dhcpconfig;
+
+import "shared/ip_address.proto";
+
+Message DHCPConfig {
+
+ //One of - Automatic or Static config
+ optional IPAddress ip;
+ optional IPAddress gateway;
+ optional IPAddress subnet;
+ 
+} 

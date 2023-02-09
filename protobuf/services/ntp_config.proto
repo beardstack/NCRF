@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package ntponfig;
+
+import "shared/ip_address.proto";
+
+
+Message NTPConfig {
+
+  required string pool_server_name [ (default) = "pool.ntp.org" ];
+  required int32 port [(min_value) = 1, (max_value) = 65536, (default) = 1337]; 
+
+} 

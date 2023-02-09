@@ -1,0 +1,12 @@
+syntax "proto3"
+
+package ipaddress;
+
+message IPAddress {
+    option (min_value) = 0;
+    option (max_value) = 255;
+    int32 octet1 = 1;
+    int32 octet2 = 2;
+    int32 octet3 = 3;
+    int32 octet4 = 4;
+} 
